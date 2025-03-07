@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Settings>
+	<Setting>
+		<Key>ModbusTCP_IP</Key>
+		<Value>192.168.0.10</Value>
+	</Setting>
+	<Setting>
+		<Key>ModbusTCP_Port</Key>
+		<Value>502</Value>
+	</Setting>
+	<Setting>
+		<Key>EtherNetIP_TargetIP</Key>
+		<Value>192.168.0.20</Value>
+	</Setting>
+	<Setting>
+		<Key>EtherNetIP_Slot</Key>
+		<Value>0</Value>
+	</Setting>
+	<Setting>
+		<Key>TimeSequence</Key>
+		<Value>设备2,设备1,设备3,设备4,设备5</Value>
+	</Setting>
+</Settings>

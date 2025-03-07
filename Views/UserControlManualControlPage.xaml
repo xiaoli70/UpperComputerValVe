@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="EquipmentSignalData.Views.UserControlManualControlPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EquipmentSignalData.Views" d:DataContext="{d:DesignInstance Type=local:UserControlManualControlPage}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+        <!-- 定义两列布局 -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="0*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- 左侧阀门列表 -->
+        <Grid Grid.Column="0" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- 顶部标题 -->
+            <TextBlock Grid.Row="0" Text="Manual Valve Control" FontWeight="Bold" FontSize="18" Margin="10" />
+
+            <!-- 中间的阀门列表 -->
+            <Grid Grid.Row="1">
+                <DataGrid x:Name="valveDataGrid" 
+          ItemsSource="{Binding Valves}" 
+          AutoGenerateColumns="False" 
+          IsReadOnly="True" 
+          Margin="10">
+                    <DataGrid.Columns>
+                        <!-- 添加复选框列 -->
+                        <DataGridTemplateColumn Width="Auto">
+                            <DataGridTemplateColumn.Header>
+                                <CheckBox 
+                    IsChecked="{Binding DataContext.IsAllSelected, 
+                                        RelativeSource={RelativeSource AncestorType=DataGrid}, 
+                                        Mode=TwoWay}" 
+                    HorizontalAlignment="Center"/>
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn Header="Valve Name" Binding="{Binding Name}" Width="*" />
+
+                        <DataGridTemplateColumn Header="Status">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Ellipse Width="20" Height="20" Fill="{Binding IndicatorColor}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="Actions">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="Open" 
+                                Width="80" 
+                                Command="{Binding DataContext.OpenValveCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                                CommandParameter="{Binding}" 
+                                Margin="5"/>
+                                        <Button Content="Close" 
+                                Width="80" 
+                                Command="{Binding DataContext.CloseValveCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                                CommandParameter="{Binding}" 
+                                Margin="5"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+            <!-- 底部控制所有阀门 -->
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                
+                <Button Content="Open Selected" Width="120" Command="{Binding OpenSelectedValvesCommand}" Margin="10"/>
+                <Button Content="Close Selected" Width="120" Command="{Binding CloseSelectedValvesCommand}" Margin="10"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- 右侧空白区域 -->
+        <Grid Grid.Column="1" Background="WhiteSmoke">
+            <!-- 可以留作扩展使用 -->
+        </Grid>
+    </Grid>
+</UserControl>

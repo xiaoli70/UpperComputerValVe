@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="EquipmentSignalData.Views.UserControlTimeSequence"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid Background="#f4f4f9">
+        <!-- 外层容器，定义间距和布局 -->
+        <Border Background="White" BorderBrush="#CCCCCC" BorderThickness="2" CornerRadius="10" Padding="20" 
+                HorizontalAlignment="Center" VerticalAlignment="Center" Width="600" Height="450">
+
+            <!-- 使用 StackPanel 垂直排列标题和 ListView -->
+            <StackPanel>
+                <!-- 页面标题 -->
+                <TextBlock Text="时序控制" 
+                           FontSize="24" 
+                           FontWeight="Bold" 
+                           Foreground="#333" 
+                           HorizontalAlignment="Center" 
+                           Margin="0,0,0,20"/>
+
+                <!-- ListView 带边框显示 -->
+                <Border Background="White" BorderBrush="#CCCCCC" BorderThickness="2" CornerRadius="10" Padding="10"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" Width="550" Height="350">
+
+                    <ListView x:Name="listViewItems"
+                              ItemsSource="{Binding Items}"
+                              DisplayMemberPath="Name"
+                              AllowDrop="True"
+                              PreviewMouseLeftButtonDown="ListView_PreviewMouseLeftButtonDown"
+                              PreviewMouseMove="ListView_PreviewMouseMove"
+                              Drop="ListView_Drop"
+                              DragOver="ListView_DragOver"
+                              ScrollViewer.VerticalScrollBarVisibility="Auto">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Width" Value="500"/>
+                                <Setter Property="Height" Value="38"/>
+                                <!--<Setter Property="Margin" Value="10"/>-->
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                <!-- 正常状态背景 -->
+                                <Setter Property="Background" Value="White"/>
+                                <Setter Property="BorderBrush" Value="#DDDDDD"/>
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="FontSize" Value="14"/>
+                                <!-- 鼠标悬停效果 -->
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListViewItem">
+                                            <Border Background="{TemplateBinding Background}"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                    CornerRadius="5">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <!-- 鼠标悬停效果 -->
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#DDDDDD"/>
+                                                </Trigger>
+                                                <!-- 选中效果 -->
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Setter Property="Background" Value="#DDDDDD"/>
+                                                    <Setter Property="BorderBrush" Value="#77787b"/>
+                                                    <Setter Property="BorderThickness" Value="2"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+
+                    </ListView>
+                </Border>
+            </StackPanel>
+        </Border>
+    </Grid>
+
+</UserControl>

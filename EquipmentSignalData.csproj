@@ -1,0 +1,78 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="BusinessLogic\**" />
+    <Compile Remove="DataService\**" />
+    <Compile Remove="Interface\**" />
+    <Compile Remove="Intetfaces\**" />
+
+    <EmbeddedResource Remove="BusinessLogic\**" />
+    <EmbeddedResource Remove="DataService\**" />
+    <EmbeddedResource Remove="Interface\**" />
+    <EmbeddedResource Remove="Intetfaces\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <None Remove="BusinessLogic\**" />
+    <None Remove="DataService\**" />
+    <None Remove="Interface\**" />
+    <None Remove="Intetfaces\**" />
+    <None Remove="Models\**" />
+    <Page Remove="BusinessLogic\**" />
+    <Page Remove="DataService\**" />
+    <Page Remove="Interface\**" />
+    <Page Remove="Intetfaces\**" />
+    <Page Remove="Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="CustomControls\EX9.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Assets\Styles\ComboBoxStyle.xaml" />
+    <Page Remove="Assets\Styles\LeftTabControlStyle.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FontAwesome.Sharp" Version="6.6.0" />
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+    <PackageReference Include="MaterialDesignColors" Version="3.1.0" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="NPOI" Version="2.7.1" />
+    <PackageReference Include="PDFsharp" Version="6.2.0-preview-1" />
+    <PackageReference Include="System.IO.Ports" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="DataService\DataService.csproj" />
+    <ProjectReference Include="Intetfaces\Intetfaces.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Styles\ComboBoxStyle.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Styles\LeftTabControlStyle.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="CustomControls\EX9.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ConfigViewModel.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="recipes.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,120 @@
+﻿<UserControl x:Class="EquipmentSignalData.CustomControls.SMC_54"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EquipmentSignalData.CustomControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="800">
+    <Grid>
+        <Image x:Name="image__C_54" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg"/>
+        <Image x:Name="image__C_0" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="495,420,0,0"/>
+        <Image x:Name="image__C_1" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="400,420,0,0"/>
+        <Image x:Name="image__C_2" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" RenderTransformOrigin="1.161,0.779" Margin="306,420,0,0"/>
+        <Image x:Name="image__C_3" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="204,420,0,0"/>
+        <Image x:Name="image__C_4" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="99,420,0,0"/>
+        <Image x:Name="image__C_5" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="0,420,0,0"/>
+        <Image x:Name="image__C_6" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="693,350,0,0"/>
+        <Image x:Name="image__C_7" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="598,350,0,0"/>
+        <Image x:Name="image__C_8" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="495,350,0,0"/>
+        <Image x:Name="image__C_9" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="399,350,0,0"/>
+        <Image x:Name="image__C_10" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="306,350,0,0"/>
+        <Image x:Name="image__C_11" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="204,350,0,0"/>
+        <Image x:Name="image__C_12" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="99,350,0,0"/>
+        <Image x:Name="image__C_13" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="0,350,0,0"/>
+        <Image x:Name="image__C_14" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="693,280,0,0"/>
+        <Image x:Name="image__C_15" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="598,280,0,0"/>
+        <Image x:Name="image__C_16" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="495,280,0,0"/>
+        <Image x:Name="image__C_17" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" RenderTransformOrigin="3.469,2.073" Margin="400,280,0,0"/>
+        <Image x:Name="image__C_18" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" RenderTransformOrigin="4.865,4.615" Margin="306,280,0,0"/>
+        <Image x:Name="image__C_19" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="204,280,0,0"/>
+        <Image x:Name="image__C_20" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="99,280,0,0"/>
+        <Image x:Name="image__C_21" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="0,280,0,0"/>
+        <Image x:Name="image__C_22" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="693,210,0,0"/>
+        <Image x:Name="image__C_23" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="693,135,0,0"/>
+        <Image x:Name="image__C_24" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="693,70,0,0"/>
+        <Image x:Name="image__C_25" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="693,0,0,0"/>
+        <Image x:Name="image__C_26" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="598,210,0,0"/>
+        <Image x:Name="image__C_27" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" RenderTransformOrigin="4.351,1.808" Margin="495,210,0,0"/>
+        <Image x:Name="image__C_28" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="400,210,0,0"/>
+        <Image x:Name="image__C_29" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="64" Source="/CustomControls/EX9.jpg" Margin="598,-1,0,0"/>
+        <Image x:Name="image__C_30" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="597,140,0,0"/>
+        <Image x:Name="image__C_31" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="495,140,0,0"/>
+        <Image x:Name="image__C_32" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="306,210,0,0"/>
+        <Image x:Name="image__C_33" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" RenderTransformOrigin="2.494,1.758" Margin="204,210,0,0"/>
+        <Image x:Name="image__C_34" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="100,210,0,0" RenderTransformOrigin="0.453,-0.407"/>
+        <Image x:Name="image__C_35" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" RenderTransformOrigin="0.965,1.949" Margin="0,210,0,0"/>
+        <Image x:Name="image__C_36" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="598,70,0,0"/>
+        <Image x:Name="image__C_37" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="400,140,0,0"/>
+        <Image x:Name="image__C_38" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" RenderTransformOrigin="3.334,1.624" Margin="306,140,0,0"/>
+        <Image x:Name="image__C_39" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="204,140,0,0"/>
+        <Image x:Name="image__C_40" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="99,140,0,0"/>
+        <Image x:Name="image__C_41" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="0,140,0,0"/>
+        <Image x:Name="image__C_42" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="495,70,0,0"/>
+        <Image x:Name="image__C_43" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="400,70,0,0"/>
+        <Image x:Name="image__C_44" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="306,70,0,0"/>
+        <Image x:Name="image__C_45" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="204,70,0,0" RenderTransformOrigin="-0.206,0.178"/>
+        <Image x:Name="image__C_46" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="99,70,0,0" RenderTransformOrigin="-0.076,0.163"/>
+        <Image x:Name="image__C_47" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="495,-3,0,0"/>
+        <Image x:Name="image__C_48" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="64" Source="/CustomControls/EX9.jpg" Margin="400,-2,0,0"/>
+        <Image x:Name="image__C_49" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="306,0,0,0"/>
+        <Image x:Name="image__C_50" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" RenderTransformOrigin="1.576,0.525" Margin="204,0,0,0"/>
+        <Image x:Name="image__C_51" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="64" Source="/CustomControls/EX9.jpg" Margin="100,0,0,0"/>
+        <Image x:Name="image__C_52" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="55" Source="/CustomControls/EX9.jpg" Margin="0,70,0,0"/>
+        <Label x:Name="label" Content="1" HorizontalAlignment="Left" Margin="16,49,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_" Content="1" HorizontalAlignment="Left" Margin="16,49,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_1" Content="1" HorizontalAlignment="Left" Margin="16,49,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_2" Content="1" HorizontalAlignment="Left" Margin="16,49,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_3" Content="1" HorizontalAlignment="Left" Margin="16,49,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_4" Content="1" HorizontalAlignment="Left" Margin="16,49,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_5" Content="1" HorizontalAlignment="Left" Margin="16,49,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_6" Content="1" HorizontalAlignment="Left" Margin="16,49,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_7" Content="1" HorizontalAlignment="Left" Margin="16,49,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_8" Content="1" HorizontalAlignment="Left" Margin="16,49,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_9" Content="1" HorizontalAlignment="Left" Margin="16,49,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_10" Content="1" HorizontalAlignment="Left" Margin="16,49,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_11" Content="1" HorizontalAlignment="Left" Margin="16,49,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_12" Content="1" HorizontalAlignment="Left" Margin="16,49,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_13" Content="1" HorizontalAlignment="Left" Margin="16,397,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="1.719,12.177"/>
+        <Label x:Name="label复制__C_14" Content="1" HorizontalAlignment="Left" Margin="711,329,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_15" Content="1" HorizontalAlignment="Left" Margin="616,329,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_16" Content="1" HorizontalAlignment="Left" Margin="513,329,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="1.298,0.731"/>
+        <Label x:Name="label复制__C_17" Content="1" HorizontalAlignment="Left" Margin="418,329,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="3.965,1.707"/>
+        <Label x:Name="label复制__C_18" Content="1" HorizontalAlignment="Left" Margin="324,329,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_19" Content="1" HorizontalAlignment="Left" Margin="222,329,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_20" Content="1" HorizontalAlignment="Left" Margin="117,329,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="5.895,9.624"/>
+        <Label x:Name="label复制__C_21" Content="1" HorizontalAlignment="Left" Margin="16,329,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="0.491,0.961"/>
+        <Label x:Name="label复制__C_22" Content="1" HorizontalAlignment="Left" Margin="711,260,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_23" Content="1" HorizontalAlignment="Left" Margin="616,260,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="2.175,0.731"/>
+        <Label x:Name="label复制__C_24" Content="1" HorizontalAlignment="Left" Margin="513,260,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_25" Content="1" HorizontalAlignment="Left" Margin="418,260,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="1.193,0.531"/>
+        <Label x:Name="label复制__C_26" Content="1" HorizontalAlignment="Left" Margin="324,260,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="2.07,0.846"/>
+        <Label x:Name="label复制__C_27" Content="1" HorizontalAlignment="Left" Margin="222,260,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="1.754,0.731"/>
+        <Label x:Name="label复制__C_28" Content="1" HorizontalAlignment="Left" Margin="117,260,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="1.622,1.139"/>
+        <Label x:Name="label复制__C_29" Content="1" HorizontalAlignment="Left" Margin="18,260,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="2.326,8.786"/>
+        <Label x:Name="label复制__C_30" Content="1" HorizontalAlignment="Left" Margin="711,187,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="1.169,0.728"/>
+        <Label x:Name="label复制__C_31" Content="1" HorizontalAlignment="Left" Margin="616,187,0,0" VerticalAlignment="Top" Width="18" RenderTransformOrigin="4.337,1.345"/>
+        <Label x:Name="label复制__C_32" Content="1" HorizontalAlignment="Left" Margin="513,187,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="2.628,1.016"/>
+        <Label x:Name="label复制__C_33" Content="1" HorizontalAlignment="Left" Margin="418,187,0,0" VerticalAlignment="Top" Width="20" RenderTransformOrigin="-0.376,0.546"/>
+        <Label x:Name="label复制__C_34" Content="1" HorizontalAlignment="Left" Margin="324,187,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_35" Content="1" HorizontalAlignment="Left" Margin="222,187,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="2.074,1.016"/>
+        <Label x:Name="label复制__C_36" Content="1" HorizontalAlignment="Left" Margin="118,187,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="3.382,2.29"/>
+        <Label x:Name="label复制__C_37" Content="1" HorizontalAlignment="Left" Margin="18,187,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="2.477,3.483"/>
+        <Label x:Name="label复制__C_38" Content="1" HorizontalAlignment="Left" Margin="711,119,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="1.924,0.687"/>
+        <Label x:Name="label复制__C_39" Content="1" HorizontalAlignment="Left" Margin="616,119,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="2.678,0.646"/>
+        <Label x:Name="label复制__C_40" Content="1" HorizontalAlignment="Left" Margin="513,119,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="4.086,1.057"/>
+        <Label x:Name="label复制__C_41" Content="1" HorizontalAlignment="Left" Margin="417,119,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="5.293,0.852"/>
+        <Label x:Name="label复制__C_42" Content="1" HorizontalAlignment="Left" Margin="324,119,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_43" Content="1" HorizontalAlignment="Left" Margin="222,119,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_44" Content="1" HorizontalAlignment="Left" Margin="118,119,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_45" Content="1" HorizontalAlignment="Left" Margin="18,119,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="1.069,2.948"/>
+        <Label x:Name="label复制__C_46" Content="1" HorizontalAlignment="Left" Margin="711,49,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="4.991,0.482"/>
+        <Label x:Name="label复制__C_47" Content="1" HorizontalAlignment="Left" Margin="616,49,0,0" VerticalAlignment="Top" Width="18"/>
+        <Label x:Name="label复制__C_48" Content="1" HorizontalAlignment="Left" Margin="513,49,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="5.041,0.399"/>
+        <Label x:Name="label复制__C_49" Content="1" HorizontalAlignment="Left" Margin="418,49,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="5.393,0.523"/>
+        <Label x:Name="label复制__C_50" Content="1" HorizontalAlignment="Left" Margin="324,49,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="8.561,0.605"/>
+        <Label x:Name="label复制__C_51" Content="1" HorizontalAlignment="Left" Margin="222,49,0,0" VerticalAlignment="Top" Width="19"/>
+        <Label x:Name="label复制__C_52" Content="1" HorizontalAlignment="Left" Margin="118,49,0,0" VerticalAlignment="Top" Width="19" RenderTransformOrigin="2.829,0.687"/>
+
+    </Grid>
+</UserControl>

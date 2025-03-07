@@ -1,0 +1,947 @@
+﻿<UserControl x:Class="EquipmentSignalData.Views.Overall"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EquipmentSignalData.Views" xmlns:local1="clr-namespace:EquipmentSignalData.Converter"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local1:BooleanToTextConverter x:Key="BooleanToTextConverter"/>
+            <Style TargetType="Border" x:Key="HoverBorder">
+                <Setter Property="Background" Value="White"/>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#FFF5F5F5"/>
+                        <Setter Property="BorderBrush" Value="#FF2196F3"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+
+    </UserControl.Resources>
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" Margin="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- 左侧区域：阀门控制 & SMC状态 -->
+            <Grid Grid.Column="0" Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="1.5*"/>
+                </Grid.RowDefinitions>
+
+                <!-- 区域1：阀门控制 -->
+                <Border Grid.Row="0" Margin="5" BorderBrush="#FF87CEEB" Effect="{StaticResource MaterialDesignShadowDepth1}" Background="White" CornerRadius="8" BorderThickness="1">
+                    <Grid Margin="10">
+                        <!-- 自动填充 Grid -->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+
+
+                            <RowDefinition Height="*"/>
+                            <!-- 可伸缩内容区域 -->
+                        </Grid.RowDefinitions>
+
+                        <!-- 标题区域 -->
+                        <Border Grid.Row="0" CornerRadius="4" Background="#FF2196F3" Padding="8" Margin="0,0,0,5">
+                            <TextBlock Text="区域1：控制及跳转区域"
+    FontSize="{DynamicResource ResponsiveFontSize}"
+    FontWeight="SemiBold"
+    Foreground="White"
+    HorizontalAlignment="Left"/>
+                        </Border>
+                        <ScrollViewer Grid.Row="1" >
+                            <!--<StackPanel>
+                                <UniformGrid Columns="3">
+                                   
+                                    -->
+                            <!--<Button Command="{Binding StartCommand}" Content="开启" Background="Green" Width="50"/>-->
+                            <!--
+                                    
+                                </UniformGrid>
+                            </StackPanel>-->
+                            <WrapPanel HorizontalAlignment="Center" Margin="10">
+                                <Button Content="主流程" Width="100" Height="40" Margin="5"  Command="{Binding SkipCommand}" CommandParameter="主流程"/>
+                                <Button Content="阀岛循环" Width="100" Height="40" Margin="5" Command="{Binding SkipCommand}" CommandParameter="阀岛循环"/>
+
+                                <Button Content="阀门控制" Width="100" Height="40" Margin="5" Command="{Binding SkipCommand}" CommandParameter="阀门控制"/>
+                                <Button Content="阀门互锁" Width="100" Height="40" Margin="5" Command="{Binding SkipCommand}" CommandParameter="阀门互锁"/>
+
+
+                            </WrapPanel>
+                        </ScrollViewer>
+
+                    </Grid>
+
+                </Border>
+
+
+                <!-- 区域2：SMC阀岛状态 -->
+                <Border Grid.Row="1" Margin="5" Background="White"
+        CornerRadius="8" BorderBrush="#FF87CEEB" BorderThickness="1"
+        Effect="{StaticResource MaterialDesignShadowDepth1}">
+
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <!-- 标题 -->
+                            <RowDefinition Height="*"/>
+                            <!-- 内容区域 -->
+                        </Grid.RowDefinitions>
+
+                        <!-- 标题区域 -->
+                        <Border Grid.Row="0" CornerRadius="4" Background="#FF2196F3" Padding="8" Margin="0,0,0,5">
+                            <TextBlock Text="区域2：SMC阀岛状态"
+                       FontSize="{DynamicResource ResponsiveFontSize}"
+                       FontWeight="SemiBold"
+                       Foreground="White"
+                       HorizontalAlignment="Left"/>
+                        </Border>
+
+                        <!-- 数据项 -->
+                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
+                      MaxHeight="400">
+                            <!-- 避免撑开整个界面 -->
+                            <ItemsControl ItemsSource="{Binding Valves}" Margin="0,5,0,0" BorderThickness="0">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Columns="8"/>
+                                        <!-- 只设置列数，行数自动适应 -->
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Margin="3" Padding="3"
+                                Background="White"
+                                CornerRadius="4"
+                                BorderBrush="#FFE0E0E0"
+                                BorderThickness="1"
+                                Effect="{StaticResource MaterialDesignShadowDepth1}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- 名称 -->
+                                                <TextBlock Text="{Binding Name}"
+                                           Grid.Column="0"
+                                           FontSize="{DynamicResource ResponsiveFontSize}"
+                                           Foreground="#FF616161"
+                                           VerticalAlignment="Center" 
+                                           HorizontalAlignment="Left"/>
+
+                                                <!-- 状态指示灯 -->
+                                                <Ellipse Width="12" Height="12"
+                                         Fill="{Binding IndicatorColor}"
+                                         Grid.Column="1"
+                                         VerticalAlignment="Center"
+                                         HorizontalAlignment="Center"
+                                         Margin="5"/>
+
+                                                <!-- 状态文本 -->
+                                                <TextBlock Text="{Binding IndicatorColor, Converter={StaticResource BooleanToTextConverter}}"
+                                           Grid.Column="2"
+                                           FontSize="{DynamicResource ResponsiveFontSize}"
+                                           Foreground="Black"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Right"
+                                           Margin="2,0"/>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </Grid>
+                </Border>
+
+
+
+
+
+                <!-- 区域3：流量设定 -->
+                <Border Grid.Row="2" Margin="5" Background="#FFF0F8FF" 
+        CornerRadius="8" BorderBrush="#FF87CEEB" BorderThickness="1"
+        Effect="{StaticResource MaterialDesignShadowDepth1}">
+
+
+                    <!--<StackPanel Margin="10">-->
+                    <Grid Margin="10">
+                        <!-- 自动填充 Grid -->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <!-- 标题 -->
+                            <RowDefinition Height="Auto"/>
+                            <!-- 表头 -->
+                            <RowDefinition Height="*"/>
+                            <!-- 可伸缩内容区域 -->
+                        </Grid.RowDefinitions>
+
+                        <!-- 标题区域 -->
+                        <Border Grid.Row="0" CornerRadius="4" Background="#FF2196F3" Padding="8" Margin="0,0,0,5">
+                            <TextBlock Text="区域3：流量计设定值和实际值" 
+                     FontSize="{DynamicResource ResponsiveFontSize}" 
+                     FontWeight="SemiBold"
+                     Foreground="White"
+                     HorizontalAlignment="Left"/>
+                        </Border>
+
+                        <!-- 表头 -->
+                        <Grid Margin="0,0,0,0" Grid.Row="1">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="名称" Grid.Column="0" FontWeight="Medium" Foreground="#FF424242" Margin="15,0,0,0"/>
+                                <TextBlock Text="SV" Grid.Column="1" FontWeight="Medium" Foreground="#FF424242" />
+                                <TextBlock Text="PV" Grid.Column="2" FontWeight="Medium" Foreground="#FF424242" Margin="40,0,10,0"/>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="名称" Grid.Column="0" FontWeight="Medium" Foreground="#FF424242" Margin="15,0,0,0"/>
+                                <TextBlock Text="SV" Grid.Column="1" FontWeight="Medium" Foreground="#FF424242" />
+                                <TextBlock Text="PV" Grid.Column="2" FontWeight="Medium" Foreground="#FF424242" Margin="40,0,10,0"/>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="名称" Grid.Column="0" FontWeight="Medium" Foreground="#FF424242" Margin="15,0,0,0"/>
+                                <TextBlock Text="SV" Grid.Column="1" FontWeight="Medium" Foreground="#FF424242" />
+                                <TextBlock Text="PV" Grid.Column="2" FontWeight="Medium" Foreground="#FF424242" Margin="40,0,10,0"/>
+                            </Grid>
+                            <Grid Grid.Column="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="名称" Grid.Column="0" FontWeight="Medium" Foreground="#FF424242" Margin="15,0,0,0"/>
+                                <TextBlock Text="SV" Grid.Column="1" FontWeight="Medium" Foreground="#FF424242" />
+                                <TextBlock Text="PV" Grid.Column="2" FontWeight="Medium" Foreground="#FF424242" Margin="40,0,10,0"/>
+                            </Grid>
+                        </Grid>
+
+                        <!-- 数据项 -->
+
+                        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" 
+              HorizontalScrollBarVisibility="Disabled"
+>
+
+                            <ItemsControl ItemsSource="{Binding FlowMeterModels}" 
+                    Margin="0,0,0,0"
+                    BorderThickness="0">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Columns="4" Rows="4"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Margin="3" Padding="5" 
+                          Background="White"
+                          CornerRadius="4"
+                          BorderBrush="#FFE0E0E0"
+                          BorderThickness="1"
+                          Effect="{StaticResource MaterialDesignShadowDepth1}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- 名称 -->
+                                                <TextBlock Text="{Binding Name}" 
+                                     Grid.Column="0"
+                                     FontSize="{DynamicResource ResponsiveFontSize}"
+                                     Foreground="#FF616161"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Left"/>
+
+                                                <!-- 设定值输入框 -->
+                                                <TextBox Text="{Binding SV, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+         Grid.Column="1"
+         Width="60"
+         Padding="8,5"                  
+         Margin="1,0"
+   Style="{StaticResource MaterialDesignOutlinedTextBox}"
+         Foreground="#FF2196F3"
+         FontWeight="Medium"
+         VerticalAlignment="Center">
+                                                    <TextBox.InputBindings>
+                                                        <KeyBinding Key="Enter" 
+                    Command="{Binding DataContext.ConfirmCommand,RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                    CommandParameter="{Binding}" />
+                                                        <!-- 直接绑定到当前项 -->
+                                                    </TextBox.InputBindings>
+                                                </TextBox>
+                                                <!-- 实际值显示 -->
+                                                <TextBlock Text="{Binding PV}" 
+                                     Grid.Column="2"
+                                     FontSize="{DynamicResource ResponsiveFontSize}"
+                                     Foreground="#FF4CAF50"
+                                     FontWeight="SemiBold"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Right"
+                                     Margin="10,0"/>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                        </ScrollViewer>
+                    </Grid>
+                    <!--</StackPanel>-->
+                </Border>
+            </Grid>
+            <!-- 右侧区域：温度、流量、压力等信息展示 -->
+            <Grid Grid.Column="1" Margin="5" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2.5*"/>
+                    <RowDefinition Height="1.8*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <!--<RowDefinition Height="1*"/>-->
+                </Grid.RowDefinitions>
+
+                <!-- 区域4：温度设定值 -->
+                <Border Grid.Row="0" Margin="5" Background="#FFF0F8FF" 
+        CornerRadius="8" BorderBrush="#FF87CEEB" BorderThickness="1"
+        Effect="{StaticResource MaterialDesignShadowDepth1}">
+                    <Grid Margin="10">
+                        <!-- 自动填充 Grid -->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <!-- 标题 -->
+                            <RowDefinition Height="Auto"/>
+                            <!-- 表头 -->
+                            <RowDefinition Height="*"/>
+                            <!-- 可伸缩内容区域 -->
+                        </Grid.RowDefinitions>
+
+                        <!-- 标题区域 -->
+                        <Border Grid.Row="0" CornerRadius="4" Background="#FF2196F3" Padding="8" Margin="0,0,0,5">
+                            <TextBlock Text="区域4：温度设定值和实际值" 
+                     FontSize="{DynamicResource ResponsiveFontSize}" 
+                     FontWeight="SemiBold"
+                     Foreground="White"
+                     HorizontalAlignment="Left"/>
+                        </Border>
+
+                        <!-- 表头 -->
+                        <Grid Margin="0,0,0,0" Grid.Row="1">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="名称" Grid.Column="0" FontWeight="Medium" Foreground="#FF424242" Margin="15,0,0,0"/>
+                                <TextBlock Text="SV" Grid.Column="1" FontWeight="Medium" Foreground="#FF424242"/>
+                                <TextBlock Text="PV" Grid.Column="2" FontWeight="Medium" Foreground="#FF424242" Margin="20,0,0,0"/>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="名称" Grid.Column="0" FontWeight="Medium" Foreground="#FF424242" Margin="15,0,0,0"/>
+                                <TextBlock Text="SV" Grid.Column="1" FontWeight="Medium" Foreground="#FF424242"/>
+                                <TextBlock Text="PV" Grid.Column="2" FontWeight="Medium" Foreground="#FF424242" Margin="20,0,0,0"/>
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="名称" Grid.Column="0" FontWeight="Medium" Foreground="#FF424242" Margin="15,0,0,0"/>
+                                <TextBlock Text="SV" Grid.Column="1" FontWeight="Medium" Foreground="#FF424242"/>
+                                <TextBlock Text="PV" Grid.Column="2" FontWeight="Medium" Foreground="#FF424242" Margin="20,0,0,0"/>
+                            </Grid>
+                            <Grid Grid.Column="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="名称" Grid.Column="0" FontWeight="Medium" Foreground="#FF424242" Margin="15,0,0,0"/>
+                                <TextBlock Text="SV" Grid.Column="1" FontWeight="Medium" Foreground="#FF424242"/>
+                                <TextBlock Text="PV" Grid.Column="2" FontWeight="Medium" Foreground="#FF424242" Margin="20,0,0,0"/>
+                            </Grid>
+                        </Grid>
+
+                        <!-- 数据项 -->
+
+                        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" 
+              HorizontalScrollBarVisibility="Disabled"
+>
+
+                            <ItemsControl ItemsSource="{Binding Temperatures}" 
+                    Margin="0,0,0,0"
+                    BorderThickness="0">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Columns="4" Rows="7"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Margin="3" Padding="5" 
+                          Background="White"
+                          CornerRadius="4"
+                          BorderBrush="#FFE0E0E0"
+                          BorderThickness="1"
+                          Effect="{StaticResource MaterialDesignShadowDepth1}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- 名称 -->
+                                                <TextBlock Text="{Binding Name}" 
+                                     Grid.Column="0"
+                                     FontSize="{DynamicResource ResponsiveFontSize}"
+                                     Foreground="#FF616161"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Left"/>
+
+                                                <!-- 设定值输入框 -->
+                                                <TextBox Text="{Binding SV, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+      Grid.Column="1"
+      Width="40"
+      Padding="0,3"                  
+      Margin="1,0"
+Style="{StaticResource MaterialDesignOutlinedTextBox}"
+      Foreground="#FF2196F3"
+      FontWeight="Medium"
+                                                         
+      VerticalAlignment="Center">
+                                                    <TextBox.InputBindings>
+                                                        <KeyBinding Key="Enter" 
+                 Command="{Binding DataContext.ConfirmCommandWD,RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                 CommandParameter="{Binding}" />
+                                                        <!-- 直接绑定到当前项 -->
+                                                    </TextBox.InputBindings>
+                                                </TextBox>
+
+                                                <!-- 实际值显示 -->
+                                                <TextBlock Text="{Binding PV}" 
+                                     Grid.Column="2"
+                                     FontSize="{DynamicResource ResponsiveFontSize}"
+                                     Foreground="#FF4CAF50"
+                                     FontWeight="SemiBold"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     Margin="0,0"/>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                        </ScrollViewer>
+                    </Grid>
+                </Border>
+
+                <!-- 区域5：温度实时值 -->
+                <Border Grid.Row="1" Margin="5" Background="#FFF0F8FF" 
+        CornerRadius="8" BorderBrush="#FF87CEEB" BorderThickness="1"
+        Effect="{StaticResource MaterialDesignShadowDepth1}">
+                    <Grid Margin="10">
+                        <!-- 自动填充 Grid -->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <!-- 标题 -->
+                            <RowDefinition Height="Auto"/>
+                            <!-- 表头 -->
+                            <RowDefinition Height="*"/>
+                            <!-- 可伸缩内容区域 -->
+                        </Grid.RowDefinitions>
+
+                        <!-- 标题区域 -->
+                        <Border Grid.Row="0" CornerRadius="4" Background="#FF2196F3" Padding="8" Margin="0,0,0,5">
+                            <TextBlock Text="区域5：温度实时值" 
+                     FontSize="{DynamicResource ResponsiveFontSize}" 
+                     FontWeight="SemiBold"
+                     Foreground="White"
+                     HorizontalAlignment="Left"/>
+                        </Border>
+
+                        <!-- 表头 -->
+                        <Grid Margin="0,0,0,0" Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="名称" Grid.Column="0" 
+                     FontWeight="Medium" 
+                     Foreground="#FF424242"
+                     HorizontalAlignment="Center"/>
+
+                            <!--<TextBlock Text="设定值 (SV)" Grid.Column="1" 
+                     FontWeight="Medium" 
+                     Foreground="#FF424242"
+                     Margin="20,0" 
+                     HorizontalAlignment="Center"/>-->
+
+                            <TextBlock Text="实际值 (PV)" Grid.Column="2" 
+                     FontWeight="Medium" 
+                     Foreground="#FF424242"
+                     Margin="20,0" 
+                     HorizontalAlignment="Center"/>
+                        </Grid>
+
+                        <!-- 数据项 -->
+
+                        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" 
+              HorizontalScrollBarVisibility="Disabled"
+>
+
+                            <ItemsControl ItemsSource="{Binding Temperatures}" 
+                    Margin="0,0,0,0"
+                    BorderThickness="0">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Columns="4" Rows="4"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Margin="3" Padding="5" 
+                          Background="White"
+                          CornerRadius="4"
+                          BorderBrush="#FFE0E0E0"
+                          BorderThickness="1"
+                          Effect="{StaticResource MaterialDesignShadowDepth1}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- 名称 -->
+                                                <TextBlock Text="{Binding Name}" 
+                                     Grid.Column="0"
+                                     FontSize="{DynamicResource ResponsiveFontSize}"
+                                     Foreground="#FF616161"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Left"/>
+
+                                                <!-- 设定值输入框 -->
+                                                <!--<TextBox Text="{Binding SV, Mode=TwoWay}" 
+                                                   Grid.Column="1"
+                                                   Width="40"
+                                                   Padding="0,3"                  
+                                                   Margin="5,0"
+                                                   Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                                   Foreground="#FF2196F3"
+                                                   FontWeight="Medium"
+                                                   VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <TextBox.InputBindings>
+                                                        <KeyBinding Key="Enter" Command="{Binding ConfirmCommand}"/>
+                                                    </TextBox.InputBindings>
+                                                </TextBox>-->
+
+                                                <!-- 实际值显示 -->
+                                                <TextBlock Text="{Binding PV}" 
+                                     Grid.Column="2"
+                                     FontSize="{DynamicResource ResponsiveFontSize}"
+                                     Foreground="#FF4CAF50"
+                                     FontWeight="SemiBold"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     Margin="0,0"/>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                        </ScrollViewer>
+                    </Grid>
+                </Border>
+
+                <!-- 区域6：压力值 -->
+                <Border Grid.Row="2" Margin="5" Background="#FFF0F8FF" 
+        CornerRadius="8" BorderBrush="#FF87CEEB" BorderThickness="1"
+        Effect="{StaticResource MaterialDesignShadowDepth1}">
+                    <Grid Margin="10">
+                        <!-- 自动填充 Grid -->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <!-- 标题 -->
+                            <RowDefinition Height="Auto"/>
+                            <!-- 表头 -->
+                            <RowDefinition Height="*"/>
+                            <!-- 可伸缩内容区域 -->
+                        </Grid.RowDefinitions>
+
+                        <!-- 标题区域 -->
+                        <Border Grid.Row="0" CornerRadius="4" Background="#FF2196F3" Padding="8" Margin="0,0,0,5">
+                            <TextBlock Text="区域6：压力值" 
+                     FontSize="{DynamicResource ResponsiveFontSize}" 
+                     FontWeight="SemiBold"
+                     Foreground="White"
+                     HorizontalAlignment="Left"/>
+                        </Border>
+
+                        <!-- 表头 -->
+                        <Grid Margin="0,0,0,0" Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="名称" Grid.Column="0" 
+                     FontWeight="Medium" 
+                     Foreground="#FF424242"
+                     HorizontalAlignment="Center"/>
+
+                            <TextBlock Text="设定值 (SV)" Grid.Column="1" 
+                     FontWeight="Medium" 
+                     Foreground="#FF424242"
+                     Margin="20,0" 
+                     HorizontalAlignment="Center"/>
+
+                            <TextBlock Text="实际值 (PV)" Grid.Column="2" 
+                     FontWeight="Medium" 
+                     Foreground="#FF424242"
+                     Margin="20,0" 
+                     HorizontalAlignment="Center"/>
+                        </Grid>
+
+                        <!-- 数据项 -->
+
+                        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" 
+              HorizontalScrollBarVisibility="Disabled"
+>
+
+                            <ItemsControl ItemsSource="{Binding Temperatures}" 
+                    Margin="0,0,0,0"
+                    BorderThickness="0">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Columns="2" Rows="1"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Margin="3" Padding="5" 
+                          Background="White"
+                          CornerRadius="4"
+                          BorderBrush="#FFE0E0E0"
+                          BorderThickness="1"
+                          Effect="{StaticResource MaterialDesignShadowDepth1}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- 名称 -->
+                                                <TextBlock Text="{Binding Name}" 
+                                     Grid.Column="0"
+                                     FontSize="{DynamicResource ResponsiveFontSize}"
+                                     Foreground="#FF616161"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Left"/>
+
+                                                <!-- 设定值输入框 -->
+                                                <TextBox Text="{Binding SV, Mode=TwoWay}" 
+                                   Grid.Column="1"
+                                   Width="40"
+                                   Padding="0,3"                  
+                                   Margin="5,0"
+                                   Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                   Foreground="#FF2196F3"
+                                   FontWeight="Medium"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <TextBox.InputBindings>
+                                                        <KeyBinding Key="Enter" Command="{Binding ConfirmCommand}"/>
+                                                    </TextBox.InputBindings>
+                                                </TextBox>
+
+                                                <!-- 实际值显示 -->
+                                                <TextBlock Text="{Binding PV}" 
+                                     Grid.Column="2"
+                                     FontSize="{DynamicResource ResponsiveFontSize}"
+                                     Foreground="#FF4CAF50"
+                                     FontWeight="SemiBold"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     Margin="0,0"/>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                        </ScrollViewer>
+                    </Grid>
+                </Border>
+                <!-- 区域7：阀门开度 -->
+                <Border Grid.Row="3" Margin="5" Background="#FFF0F8FF" 
+        CornerRadius="8" BorderBrush="#FF87CEEB" BorderThickness="1"
+        Effect="{StaticResource MaterialDesignShadowDepth1}">
+                    <Grid Margin="10">
+                        <!-- 自动填充 Grid -->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <!-- 标题 -->
+                            <RowDefinition Height="Auto"/>
+                            <!-- 表头 -->
+                            <RowDefinition Height="*"/>
+                            <!-- 可伸缩内容区域 -->
+                        </Grid.RowDefinitions>
+
+                        <!-- 标题区域 -->
+                        <Border Grid.Row="0" CornerRadius="4" Background="#FF2196F3" Padding="8" Margin="0,0,0,5">
+                            <TextBlock Text="区域7：阀门开度" 
+                     FontSize="{DynamicResource ResponsiveFontSize}" 
+                     FontWeight="SemiBold"
+                     Foreground="White"
+                     HorizontalAlignment="Left"/>
+                        </Border>
+
+                        <!-- 表头 -->
+                        <Grid Margin="0,0,0,0" Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="名称" Grid.Column="0" 
+                     FontWeight="Medium" 
+                     Foreground="#FF424242"
+                     HorizontalAlignment="Center"/>
+
+                            <!--<TextBlock Text="设定值 (SV)" Grid.Column="1" 
+                     FontWeight="Medium" 
+                     Foreground="#FF424242"
+                     Margin="20,0" 
+                     HorizontalAlignment="Center"/>-->
+
+                            <TextBlock Text="实际值 (PV)" Grid.Column="2" 
+                     FontWeight="Medium" 
+                     Foreground="#FF424242"
+                     Margin="20,0" 
+                     HorizontalAlignment="Center"/>
+                        </Grid>
+
+                        <!-- 数据项 -->
+
+                        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" 
+              HorizontalScrollBarVisibility="Disabled"
+>
+
+                            <ItemsControl ItemsSource="{Binding Temperatures}" 
+                    Margin="0,0,0,0"
+                    BorderThickness="0">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Columns="1" Rows="1"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Margin="3" Padding="5" 
+                          Background="White"
+                          CornerRadius="4"
+                          BorderBrush="#FFE0E0E0"
+                          BorderThickness="1"
+                          Effect="{StaticResource MaterialDesignShadowDepth1}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- 名称 -->
+                                                <TextBlock Text="{Binding Name}" 
+                                     Grid.Column="0"
+                                     FontSize="{DynamicResource ResponsiveFontSize}"
+                                     Foreground="#FF616161"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Left"/>
+
+                                                <!-- 设定值输入框 -->
+                                                <TextBox Text="{Binding SV, Mode=TwoWay}" 
+                                   Grid.Column="1"
+                                   Width="40"
+                                   Padding="0,3"                  
+                                   Margin="5,0"
+                                   Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                   Foreground="#FF2196F3"
+                                   FontWeight="Medium"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <TextBox.InputBindings>
+                                                        <KeyBinding Key="Enter" Command="{Binding ConfirmCommand}"/>
+                                                    </TextBox.InputBindings>
+                                                </TextBox>
+
+                                                <!-- 实际值显示 -->
+                                                <TextBlock Text="{Binding PV}" 
+                                     Grid.Column="2"
+                                     FontSize="{DynamicResource ResponsiveFontSize}"
+                                     Foreground="#FF4CAF50"
+                                     FontWeight="SemiBold"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Center"
+                                     Margin="0,0"/>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                        </ScrollViewer>
+                    </Grid>
+                </Border>
+
+                <!--<Border Grid.Row="4" Margin="5" Background="#FFF0F8FF" 
+        CornerRadius="8" BorderBrush="#FF87CEEB" BorderThickness="1"
+        Effect="{StaticResource MaterialDesignShadowDepth1}">
+                    <Grid Margin="10">
+                        -->
+                <!-- 自动填充 Grid -->
+                <!--
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            -->
+                <!-- 标题 -->
+                <!--
+                            <RowDefinition Height="Auto"/>
+                            -->
+                <!-- 表头 -->
+                <!--
+                            <RowDefinition Height="*"/>
+                            -->
+                <!-- 可伸缩内容区域 -->
+                <!--
+                        </Grid.RowDefinitions>
+
+                        -->
+                <!-- 标题区域 -->
+                <!--
+                        <Border Grid.Row="0" CornerRadius="4" Background="#FF2196F3" Padding="8" Margin="0,0,0,5">
+                            <TextBlock Text="区域8：模拟量数值显示" 
+                     FontSize="{DynamicResource ResponsiveFontSize}" 
+                     FontWeight="SemiBold"
+                     Foreground="White"
+                     HorizontalAlignment="Left"/>
+                        </Border>
+
+                        -->
+                <!-- 表头 -->
+                <!--
+                        <Grid Margin="0,0,0,0" Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="名称" Grid.Column="0" 
+                     FontWeight="Medium" 
+                     Foreground="#FF424242"
+                     HorizontalAlignment="Center"/>
+
+                            <TextBlock Text="设定值 (SV)" Grid.Column="1" 
+                     FontWeight="Medium" 
+                     Foreground="#FF424242"
+                     Margin="20,0" 
+                     HorizontalAlignment="Center"/>
+
+                            <TextBlock Text="实际值 (PV)" Grid.Column="2" 
+                     FontWeight="Medium" 
+                     Foreground="#FF424242"
+                     Margin="20,0" 
+                     HorizontalAlignment="Center"/>
+                        </Grid>
+
+                        -->
+                <!-- 数据项 -->
+                <!--
+
+                        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" 
+              HorizontalScrollBarVisibility="Disabled"
+>
+
+                           
+
+                        </ScrollViewer>
+                    </Grid>
+                </Border>-->
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

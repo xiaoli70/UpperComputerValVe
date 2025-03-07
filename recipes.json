@@ -1,0 +1,22 @@
+[
+  {
+    "Name": "Recipe1",
+    "Temperature": 300,
+    "MFCFlowRate": 50,
+    "ButterflyValveOpening": 80,
+    "Steps": [
+      {
+        "StepNumber": 1,
+        "Action": "开流量计",
+        "TargetValue": 50,
+        "Duration": 5000
+      },
+      {
+        "StepNumber": 2,
+        "Action": "开蝶阀",
+        "TargetValue": 80,
+        "Duration": 3000
+      }
+    ]
+  }
+]

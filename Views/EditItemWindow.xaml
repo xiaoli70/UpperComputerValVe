@@ -1,0 +1,45 @@
+﻿<Window x:Class="EquipmentSignalData.Views.EditItemWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:EquipmentSignalData.Views"
+        Title="编辑项" Height="300" Width="400" WindowStartupLocation="CenterOwner">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Index -->
+        <TextBlock Text="ID:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0,5" />
+        <TextBox Text="{Binding Index}" Grid.Row="0" Grid.Column="1" Margin="5" IsReadOnly="True" />
+
+        <!-- Name -->
+        <TextBlock Text="名称:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,5" />
+        <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Margin="5" />
+
+        <!-- Unit -->
+        <TextBlock Text="单位:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,5" />
+        <TextBox Text="{Binding Unit, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Margin="5" />
+
+        <!-- Type -->
+        <TextBlock Text="类型:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="0,5" />
+        <TextBox Text="{Binding Type, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Margin="5" />
+
+        <!-- Spacer -->
+        <Grid Grid.Row="4" Grid.ColumnSpan="2" />
+
+        <!-- Buttons -->
+        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Right">
+            <Button Content="保存" Width="75" Margin="5" Click="Save_Click" />
+            <Button Content="取消" Width="75" Margin="5" Click="Cancel_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

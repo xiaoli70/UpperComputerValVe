@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="EquipmentSignalData.Views.UserControlEquipmentLog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EquipmentSignalData.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- 新增行用于筛选 -->
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <!-- 筛选控件和添加按钮 -->
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
+            <TextBlock Text="名称筛选：" VerticalAlignment="Center" Margin="10,0,5,0"/>
+            <TextBox Width="200" Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}"
+                     VerticalAlignment="Center" />
+            <TextBlock Text="日期筛选：" VerticalAlignment="Center" Margin="10,0,5,0"/>
+
+            <!-- 起始日期 -->
+            <DatePicker SelectedDate="{Binding SelectedStartDate, UpdateSourceTrigger=PropertyChanged}" 
+                VerticalAlignment="Center" Margin="5,0,5,0"/>
+
+            <Label Content="-" VerticalAlignment="Center" />
+
+            <!-- 结束日期 -->
+            <DatePicker SelectedDate="{Binding SelectedEndDate, UpdateSourceTrigger=PropertyChanged}" 
+                VerticalAlignment="Center" Margin="5,0,20,0"/>
+            <!-- 如果需要筛选按钮，可以取消注释以下按钮 -->
+            
+            <Button Content="筛选" Command="{Binding FilterCommand}" Margin="5,0,0,0" />
+            
+        </StackPanel>
+
+        <DataGrid ItemsSource="{Binding PagedItems}" AutoGenerateColumns="False"
+                  CanUserAddRows="False" IsReadOnly="True" Grid.Row="1"
+                  AlternatingRowBackground="#F0F0F0"
+                  RowBackground="White"
+                  SelectionMode="Single"
+                  Margin="0,0,0,10"
+                  VirtualizingStackPanel.IsVirtualizing="True"
+                  VirtualizingStackPanel.VirtualizationMode="Recycling"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  RowHeight="41">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="阀门名称" Binding="{Binding ValveName}" Width="Auto" />
+                <DataGridTextColumn Header="时间" Binding="{Binding Timestamp, StringFormat=\{0:yyyy-MM-dd HH:mm:ss\}}" Width="Auto" />
+
+                <DataGridTextColumn Header="操作" Binding="{Binding OperationName}" Width="Auto" />
+
+                <!--<DataGridTemplateColumn Header="操作" Width="150">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button Content="编辑" Margin="5,0"
+                                        Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                        CommandParameter="{Binding}" />
+                                <Button Content="删除" Margin="5,0"
+                                        Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                        CommandParameter="{Binding}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>-->
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" DockPanel.Dock="Bottom" Grid.Row="2">
+            <Button Content="&lt;&lt;首页" Command="{Binding FirstPageCommand}" Margin="5" />
+            <Button Content="上一页" Command="{Binding PreviousPageCommand}" Margin="5" />
+            <TextBlock Text="{Binding CurrentPage}" VerticalAlignment="Center" Margin="10,0" />
+            <TextBlock Text=" / " VerticalAlignment="Center" />
+            <TextBlock Text="{Binding TotalPages}" VerticalAlignment="Center" Margin="0,0,10,0" />
+            <Button Content="下一页" Command="{Binding NextPageCommand}" Margin="5" />
+            <Button Content="末页 >>" Command="{Binding LastPageCommand}" Margin="5" />
+        </StackPanel>
+    </Grid>
+</UserControl>

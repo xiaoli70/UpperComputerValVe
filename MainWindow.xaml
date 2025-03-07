@@ -1,0 +1,121 @@
+﻿<Window x:Class="EquipmentSignalData.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EquipmentSignalData"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:local1="clr-namespace:EquipmentSignalData.Views"
+        xmlns:local2="clr-namespace:EquipmentSignalData.Converter"
+        mc:Ignorable="d"
+       Title="" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized"
+       >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding SideBarWidth, Mode=TwoWay}"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <materialDesign:ColorZone Mode="SecondaryDark" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" CornerRadius="10,10,0,0" Background="#77787b">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="541*"/>
+                    <ColumnDefinition Width="159*"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Text="工控系统" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Left" 
+                    Margin="20,3,0,0" 
+                    FontWeight="Bold" 
+                    FontSize="22" Grid.ColumnSpan="3" Foreground="#E5FFFFFF"/>
+
+                <Button x:Name="button" Width="50" Height="30" Style="{StaticResource MaterialDesignFlatButton}" Margin="152,3,0,0"  Click="ToggleButton_Click" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <materialDesign:PackIcon Kind="Menu" Foreground="White"/>
+                </Button>
+                <!--<materialDesign:PopupBox Grid.Column="3" 
+             PlacementMode="BottomAndAlignRightEdges" 
+             HorizontalAlignment="Right" 
+             Margin="0,10,20,10"/>-->
+            </Grid>
+        </materialDesign:ColorZone>
+        <Grid x:Name="SideBar" HorizontalAlignment="Left" Grid.Row="1" Background="{StaticResource PrimaryHueMidBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="326*"/>
+            </Grid.RowDefinitions>
+
+            <!--<Grid Grid.Row="0" Background="#77787b">
+                <Image Source="/Assets/Images/Logo.png" />
+            </Grid>-->
+            <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="1">
+                <StackPanel x:Name="Menu" Margin="10"/>
+            </ScrollViewer>
+        </Grid>
+        <!--<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="1" Grid.Column="1">
+        <StackPanel x:Name="StackPanelMain" />
+        </ScrollViewer>-->
+
+        <Grid x:Name="StackPanelMain" Grid.Row="1" Grid.Column="1">
+            <ContentControl Content="{Binding CurrentView}" />
+
+            <ItemsControl ItemsSource="{Binding Source={x:Static local2:AlarmManager.Instance}, Path=Alarms}"
+              VerticalAlignment="Bottom"
+              HorizontalAlignment="Right"
+              Margin="10">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <local1:AlarmNotification Margin="0 5"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                        <!-- 设置初始位置在右侧，并定义动画目标属性 -->
+                        <Setter Property="RenderTransform">
+                            <Setter.Value>
+                                <TranslateTransform X="300"/>
+                                <!-- 初始偏移量 -->
+                            </Setter.Value>
+                        </Setter>
+                        <!-- 动画触发：当项加载时 -->
+                        <Style.Triggers>
+                            <EventTrigger RoutedEvent="Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <!-- 从右到左滑入动画 -->
+                                        <DoubleAnimation 
+                                From="300" 
+                                To="0"
+                                Duration="0:0:0.3"
+                                Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                                DecelerationRatio="0.7" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            
+                            
+                            
+                        </Style.Triggers>
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+            </ItemsControl>
+
+
+        </Grid>
+        <!--<StackPanel x:Name="StackPanelMain" Grid.Row="1" Grid.Column="1"/>-->
+        
+    </Grid>
+</Window>

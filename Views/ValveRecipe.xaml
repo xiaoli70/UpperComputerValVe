@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="EquipmentSignalData.Views.ValveRecipe"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EquipmentSignalData.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- 配方列表 -->
+            <ListBox ItemsSource="{Binding ValveRecipes}" SelectedItem="{Binding SelectedValveRecipe}"
+                 DisplayMemberPath="Name" Grid.Column="0"/>
+
+            <!-- 右侧配置 -->
+            <StackPanel Grid.Column="1" Margin="10">
+                
+                <TextBox Text="{Binding SelectedValveRecipe.Name}"/>
+            <TextBlock Text="提示：选中表示打开阀门，未选中表示关闭阀门" 
+               Foreground="Gray" 
+               Margin="0,10,0,10" 
+               FontStyle="Italic" />
+            <!-- 64个阀门状态 -->
+                <WrapPanel>
+                    <ItemsControl ItemsSource="{Binding SelectedValveRecipe.ValveStates}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="5">
+                                <TextBlock Text="{Binding Name}"/>
+                                <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </WrapPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="新建配方" Command="{Binding AddValveRecipeCommand}" Width="100" Margin="5"/>
+                <Button Content="保存" Command="{Binding SaveValveRecipeCommand}" Width="100" Margin="5"/>
+                <Button Content="加载" Command="{Binding LoadValveRecipeCommand}" Width="100" Margin="5"/>
+                    <!--<Button Content="运行" Command="{Binding RunValveRecipeCommand}"/>-->
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+</UserControl>
